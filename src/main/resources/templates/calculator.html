@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate</title>
+</head>
+<body>
+<H1>Calculator</H1>
+
+<form action="/calculate" method="get">
+    <label>
+        <span>Average year salary:</span>
+        <input type="text" name="salary" pattern="\d+(\.\d{0,2})?"/>
+    </label>
+    <label>
+        <span>Vacation days:</span>
+        <input type="text" name="days" pattern="\d+"/>
+    </label>
+    <button type="submit">Calculate</button>
+</form>
+
+<p>Vacation payments: <span th:text="${payments}"/> RUB</p>
+</body>
+</html>
