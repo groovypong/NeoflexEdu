@@ -16,6 +16,6 @@ public class CalculateServiceTest {
         String vacationDays = "1";
         String expectedResult = "1.14";
 
-        assertEquals(new BigDecimal("1.14"), calculateService.calculate(salary, vacationDays));
+        assertEquals(new BigDecimal(expectedResult), calculateService.calculate(salary, vacationDays));
     }
 }
