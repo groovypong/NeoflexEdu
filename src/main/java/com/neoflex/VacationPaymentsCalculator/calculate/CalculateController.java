@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CalculateController {
-    CalculateService calculateService = new CalculateService();
+    private final CalculateService calculateService;
+
+    public CalculateController(CalculateService calculateService) {
+        this.calculateService = calculateService;
+    }
 
     @GetMapping("/calculate")
     public String calculator(
