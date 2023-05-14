@@ -10,11 +10,27 @@
 <form action="/calculate" method="get">
     <label>
         <span>Average year salary:</span>
-        <input type="text" name="salary" pattern="\d+(\.\d{0,2})?"/>
+        <input type="text" name="salary" pattern="\d+(\.\d{0,2})?" required/>
     </label>
     <label>
         <span>Vacation days:</span>
-        <input type="text" name="days" pattern="\d+"/>
+        <input type="text" name="days" pattern="\d+" required/>
+    </label>
+    <button type="submit">Calculate</button>
+</form>
+<br>
+<form action="/calculate" method="get">
+    <label>
+        <span>Average year salary:</span>
+        <input type="text" name="salaryByCalendar" pattern="\d+(\.\d{0,2})?" required/>
+    </label>
+    <label>
+        <span>Vacation from:</span>
+        <input type="date" name="vacationFrom" required/>
+    </label>
+    <label>
+        <span>Vacation to:</span>
+        <input type="date" name="vacationTo" required/>
     </label>
     <button type="submit">Calculate</button>
 </form>

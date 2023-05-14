@@ -8,19 +8,34 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CalculateController {
-    private final CalculateService calculateService;
 
-    public CalculateController(CalculateService calculateService) {
+    private final CalculateService calculateService;
+    private final CalculateByCalendarService calculateByCalendarService;
+
+    public CalculateController(
+            CalculateService calculateService,
+            CalculateByCalendarService calculateByCalendarService
+    ) {
         this.calculateService = calculateService;
+        this.calculateByCalendarService = calculateByCalendarService;
     }
 
     @GetMapping("/calculate")
     public String calculator(
             Model model,
             @Nullable @RequestParam String salary,
-            @Nullable @RequestParam String days
+            @Nullable @RequestParam String days,
+            @Nullable @RequestParam String salaryByCalendar,
+            @Nullable @RequestParam String vacationFrom,
+            @Nullable @RequestParam String vacationTo
     ) {
-        model.addAttribute("payments", calculateService.calculate(salary, days));
+        model.addAttribute(
+                "payments",
+                salary != null
+                        ? calculateService.calculate(salary, days)
+                        : calculateByCalendarService.calculate(salaryByCalendar, vacationFrom, vacationTo)
+        );
+
         return "calculator";
     }
 }
