@@ -9,15 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class CalculateController {
 
-    private final CalculateService calculateService;
-    private final CalculateByCalendarService calculateByCalendarService;
+    private final CalculateWithCalendarService calculateWithCalendarService;
 
     public CalculateController(
-            CalculateService calculateService,
-            CalculateByCalendarService calculateByCalendarService
+            CalculateWithCalendarService calculateWithCalendarService
     ) {
-        this.calculateService = calculateService;
-        this.calculateByCalendarService = calculateByCalendarService;
+        this.calculateWithCalendarService = calculateWithCalendarService;
     }
 
     @GetMapping("/calculate")
@@ -32,8 +29,8 @@ public class CalculateController {
         model.addAttribute(
                 "payments",
                 salary != null
-                        ? calculateService.calculate(salary, days)
-                        : calculateByCalendarService.calculate(salaryByCalendar, vacationFrom, vacationTo)
+                        ? calculateWithCalendarService.calculate(salary, days)
+                        : calculateWithCalendarService.calculate(salaryByCalendar, vacationFrom, vacationTo)
         );
 
         return "calculator";

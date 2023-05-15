@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculateByCalendarServiceTest {
 
-    private final CalculateByCalendarService calculateByCalendarService = new CalculateByCalendarService();
+    private final CalculateWithCalendarService calculateWithCalendarService = new CalculateWithCalendarService();
 
     @Test
     public void calculateShouldReturnResult() {
@@ -17,7 +17,7 @@ public class CalculateByCalendarServiceTest {
         String vacationTo = "2023-03-02";
         String expectedResult = "2.28";
 
-        assertEquals(new BigDecimal(expectedResult), calculateByCalendarService.calculate(salary,vacationFrom, vacationTo));
+        assertEquals(new BigDecimal(expectedResult), calculateWithCalendarService.calculate(salary,vacationFrom, vacationTo));
     }
 
 }
